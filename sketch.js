@@ -128,7 +128,7 @@ function setup() {
   button_help.mousePressed(buttonPressed_help)
 
   X = 100
-  Y = 438 //dit hier is precies 438 zodat de buttons netjes op de "grond" zitten
+  Y = 430 //dit hier is precies 430 zodat de buttons netjes op de "grond" zitten
   size_X = 70
   size_Y = 70
 
