@@ -6,13 +6,13 @@ let energy = 100;
 
 let clean = 100;
 
-let happenis = 100;
+let happiness = 100;
 
 let minigame1 = false;
 
 let button_hide = true;
 
-let bodys = 0;
+let bodies = 0;
 
 let game_state = "on"
 
@@ -161,8 +161,8 @@ function setup() {
  food = getItem("fullnes",food)
  energy = getItem("energy",energy)
  clean = getItem("clean",clean)
- happenis = getItem("happenis",happenis)
- bodys = getItem("bodys",bodys)
+ happiness = getItem("happines",happiness)
+ bodies = getItem("bodys",bodies)
 
 
  //here setting the volume of the effects to ensure they dont blow your ears out
@@ -215,7 +215,7 @@ function draw() {
   rect(X*1.2,Y/8.5,size_X+(clean),size_Y*0.90)
 
   fill('#1add4e')
-  rect(X*1.2,Y/1.7,size_X+(happenis),size_Y*0.90)
+  rect(X*1.2,Y/1.7,size_X+(happiness),size_Y*0.90)
 
   fill(0)// hier is de text
 
@@ -225,11 +225,11 @@ function draw() {
 
   text("cleanliness "+clean,X*1.2,Y/3)
 
-  text("happy "+happenis,X*1.2,Y/1.25)
+  text("happy "+happiness,X*1.2,Y/1.25)
 
   textSize(20)
 
-  text("body's : "+bodys,X*2.5,Y/3)
+  text("bodies : "+bodies,X*2.5,Y/3)
 
   textSize(10)
 
@@ -246,16 +246,16 @@ function draw() {
   clean = 0
  }
 
-  if(happenis <= 0){
-  happenis = 0
+  if(happiness <= 0){
+  happiness = 0
  }
 
  //hier stores all the information
  storeItem("fullnes",food)
  storeItem("energy",energy)
  storeItem("clean",clean)
- storeItem("happenis",happenis)
- storeItem("bodys",bodys)
+ storeItem("happines",happiness)
+ storeItem("bodys",bodies)
 
   X = 75
   Y = 100
@@ -266,10 +266,10 @@ function draw() {
  //hier word het images geplaatst
 
 
-   if(food >= 75 && energy >= 75 && happenis >= 75 && clean >= 75){
+   if(food >= 75 && energy >= 75 && happiness >= 75 && clean >= 75){
     image(image_final_cult[4 + anim_move],X,Y,size_X*2,size_Y*2)
 
-   } else if(food < 5 && energy < 5 && clean < 5 && happenis < 5){
+   } else if(food < 5 && energy < 5 && clean < 5 && happiness < 5){
 
     image(image_final_cult[12],X,Y,size_X*2,size_Y*2)
 
@@ -289,7 +289,7 @@ function draw() {
 
     image(image_final_cult[0 + anim_move],X,Y,size_X*2,size_Y*2)
 
-   } else if(happenis <= 35){
+   } else if(happiness <= 35){
 
     image(image_final_cult[2 + anim_move],X,Y,size_X*2,size_Y*2)
 
@@ -370,9 +370,9 @@ function buttonPressed_food(){
 
   if(game_state == "on"){
 
-  if(bodys > 0){
+  if(bodies > 0){
     food += 25
-    bodys --
+    bodies --
     clean -= 2
     eat_sound1.play()
  if(food >= 100){
@@ -386,7 +386,7 @@ function buttonPressed_energy(){
   if(game_state == "on"){
   food -= 5
   energy += 20
-  happenis -= 5
+  happiness -= 5
   sleep_sound1.play()
   if(energy >= 100){
     energy = 100
@@ -434,9 +434,9 @@ function buttonPressed_redo(){
   food = 100
   energy = 100
   clean = 100
-  happenis = 100
+  happiness = 100
   game_state = "on"
-  bodys = 0
+  bodies = 0
 }
 
 function buttonPressed_help(){
@@ -458,7 +458,7 @@ function clean_drain(){
   clean -= 2
 }
 function happy_drain(){
- happenis -= 10
+ happiness -= 10
 }
 
 function anim_move_func(){ //this is for the 'animation'
@@ -487,12 +487,12 @@ if(game_state == "on"){
      ){if(victim_dead == false){
 
      crossbow_sound1.play()
-      bodys ++
+      bodies ++
       energy -= 5
-      happenis += 25
+      happiness += 25
       clean -= 2
-      if(happenis > 100){
-        happenis = 100
+      if(happiness > 100){
+        happiness = 100
       }
       victim_dead = true
     }
